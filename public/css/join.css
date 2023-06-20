@@ -1,0 +1,76 @@
+.top {width: 100%; margin-top: 76px;}
+.top img { width: 100%;}
+
+
+.joinCenter {
+
+    width: 1200px;
+    margin: 30px auto;
+
+}
+
+.joinmain {
+
+    width: 620px;
+    height: 700px;
+    margin: 0 auto;
+
+}
+
+
+
+.form1{
+
+    width: 620px;
+    margin: 15px auto;
+    background: #fff;
+    padding: 15px 20px;
+    border: 1px solid #e6e6e6;
+}
+
+
+.form1 >h2 {
+
+    width: 100%;
+    font-size: 13px;
+
+}
+
+
+.form1 > input{
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+}
+
+
+.btn {
+    width: 100%;
+    height: 40px;
+    position: relative;
+}
+
+
+.btn > button {
+    width: 200px;
+    height: 40px;
+    background-color: #333333;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    
+    
+}
+
+.btn > div{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.msg {
+    color: blue;
+    font-size: 13px;
+}

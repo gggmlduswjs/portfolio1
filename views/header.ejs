@@ -84,9 +84,22 @@
                     </li>
                 </ul>
             </div>    
+            <!-- 서버에서 넘겨받은 로그인 정보에 따라 
+                로그인이 되있다면 ->000님 로그아웃
+                로그인이 안되있다면 -> 로그인 회원가입
+            -->
             <ul class="login">
-                <li><router-link><img src="img/login_icon1.png">로그인</router-link></li>
-                <li><router-link><img src="img/login_icon2.png">회원가입</router-link></li>
+                <%if(login) {%>
+                    <li><a href="/mypage"><%- login.memberid%></a></li>
+                    <li><a href="/logout">로그아웃</a></li>
+                <%} else {%>
+                    <li><a href="/login"><img src="img/login_icon1.png">로그인</a></li>
+                    <li><a href="/join"><img src="img/login_icon2.png">회원가입</a></li>
+                <%}%>
             </ul>
+
+            
+               
+        
         </div> 
     </div>

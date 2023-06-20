@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 화면 페이지</title>
+</head>
+<body>
+    <%- include("header.ejs",{title:"로그인 화면 페이지",cssFiles:["login.css","header.css","footer.css"]})%>
+
+
+    <div class="top">
+        <img src="./img/sub_top.jpg">
+    </div>
+
+    <div class="loginCenter">
+        <div class="loginBox">
+            <h2>로그인</h2>
+            <form id="login_form" action="/logincheck" method="post">
+                <input type="text" name="memberid" placeholder="아이디를 입력해주세요">
+                <input type="password" name="memberpass" placeholder="비밀번호를 입력해주세요">
+                <button type="submit">로그인</button>
+                <ul class="log_gnb">
+                    <li><a href="#">회원정보찾기</a></li>
+                    <li><a href="/join">회원가입</a></li>
+                </ul>
+            </form>
+        </div>
+    </div>
+
+    
+
+    <%-include("footer")%>
+</body>
+</html>

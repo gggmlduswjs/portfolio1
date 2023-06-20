@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지(자바스크립트 정규표현식은 본인이 직접 반영)</title>
+</head>
+<body>
+    <%- include("header.ejs",{title:"회원가입페이지",cssFiles:["join.css","header.css","footer.css"]})%>
+
+    <div class="top">
+        <img src="./img/sub_top.jpg">
+    </div>
+
+    <div class="joinCenter">
+        <div class="joinmain">
+            <form id="join_form" action="/joindb" method="post">
+                <div class="form1">
+                    <h2>사이트정보입력</h2>
+                    <input type="text" name="memberid" placeholder="아이디">
+                    <span class="msg">영문자, 숫자, _ 만 입력 가능. 최소 3자이상 입력하세요.</span>
+                    <input type="password" name="memberpass" placeholder="비밀번호">
+                    <input type="password" name="memberpassChk" placeholder="비밀번호 확인">
+                </div>
+                <div class="form1">
+                    <h2>개인정보입력</h2>
+                    <input type="text" name="membername" placeholder="이름">
+                    <span class="msg">공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)<br>
+                        닉네임을 바꾸시면 앞으로 60일 이내에는 변경 할 수 없습니다.</span>
+                    <input type="text" name="membernick" placeholder="닉네임">
+                    <input type="text" name="memberemail" placeholder="email">
+                </div>
+                <div class="btn">
+                    <button type="submit">회원가입</button>
+                    <div><a href="/">취소</a> </div><!-- 취소 눌렀을 때 이동하는 페이지경로는 알아서 구성-->
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+
+    <%-include("footer")%>
+
+
+    <script>
+        const join = document.querySelector("#join_form");
+
+        const userId = document.querySelector("#memberid");
+        const userPass = document.querySelector("#memberpass");
+        const userPassChk = document.querySelector("#memberpassChk");
+        const userName = document.querySelector("#membername");
+        const userNick = document.querySelector("#membernickname");
+        const userEmail = document.querySelector("#memberemail");
+
+        let validCheck = {
+
+            validId:false,
+            validPass:false,
+            validPassChk:false,
+            validEmail:false,
+            validName:false,
+            validNick:false,
+
+        }
+
+
+        join.onsubmit = function(event){
+          
+
+            const idValue = userId.value;
+            const passValue = userPass.value;
+            const passChkValue = userPassChk.value;
+            const nameValue = userName.value;
+            const nickValue = userNick.value;
+            const emailValue = userEmail.value;
+
+            const checkId =/^[/w]{3,12} $/;
+            const checkPass = /^[\w\!\$\&\-]{4,8}$/;
+            const checkName= /^[가-힣]{2,4}$/;
+            const checkNick= /^[가-힣]{2,4}$/;
+            const checkEmail = /^[\w]+[\@][a-z]{5,7}[\.][a-z]{2,3}$/;
+
+
+            if(checkId.test(idValue)){
+                validCheck.validId=true;
+            }
+            else{
+                validCheck.validId=false;
+            }
+
+            if(checkPass.test(passValue)){
+                validCheck.validPass=true;
+            }
+            else{
+                validCheck.validPass=false;
+            }
+
+            if(checkName.test(passChkValue)){
+                validCheck.validName=true;
+            }
+            else{
+                validCheck.validName=false;
+            }
+
+            if(checkNick.test(nameValue)){
+                validCheck.validNick=true;
+            }
+            else{
+                validCheck.validNick=false;
+            }
+
+             //비밀번호 확인 체크
+           if(PassValue === PassChkValue){
+                validCheck.validPassChk=true;
+           }
+           else{
+                validCheck.validPassChk=false;
+            }
+           }
+
+           //validCheck안에 프로퍼티 값들이 전부다 true면 회원가입 완료 -> 로그인 페이지로 가게끔 이동 
+           //하나라도 거짓 항목이 있으면 경고창을 띄운다.
+           if( validCheck.validId && validCheck.validPass && validCheck.validPassChk && validCheck.validEmail && validCheck.validName && validCheck.validNick){
+               join.submit();
+           }
+           else{
+               event.preventDefault();
+           }
+
+        
+
+        
+    </script>
+</body>
+</html>
