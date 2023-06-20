@@ -1,0 +1,239 @@
+
+    <title>포폴메인페이지</title>
+</head>
+<body>
+
+    <%- include("header.ejs",{title:"포폴 메인페이지",cssFiles:["cont1.css","cont2.css","cont3.css","cont4.css","footer.css","header.css"]})%>
+    <div id="container">
+        <div id="cont1" class="contents-wrap">
+            <div class="ani line-box box1"></div>
+            <div class="ani line-box box2"></div>
+            <div class="ani line-box box3"></div>
+            <div class="ani line-box box4"></div>
+            <div class="ani line-box box5"></div>
+            <div class="ani line-box box6"></div>
+            <div class="ani line-box box7"></div>
+            <div class="ani line-box box8"></div>
+            <div class="ani draw item1"></div>
+            <div class="ani draw item2"></div>
+            <div class="ani draw item2-1"></div>
+            <div class="ani draw item3"></div>
+            <div class="ani draw item4"></div>
+            <div class="ani draw item5"></div>
+            <div class="ani draw item6"></div>
+            <div class="ani draw item7"></div>
+            <div class="ani draw item8"></div>
+            <div class="inner-con">
+                <h1 class="text first"><img src="img/logo.png"></h1>
+                <h2 class="text second">
+                    <p class="first">IT교육을 위한 필수교재</p>
+                    <p>교육을 선도하는 빅식스</p>
+                </h2>
+            </div>
+          </div>
+
+
+
+          <div class="cont2">
+                <div class="title">
+                    <h2><span>BIG6이론</span> IT교재</h2>
+                    <P>창의적 문제 해결 프로젝트 빅식스! BIG6 이론을 기반으로 연구 개발된 빅식스 IT교재가 출간 되었습니다.</P>
+                </div>
+                <div class="top">
+                    <div class="wrap1">
+                        <div class="wrapper1">
+                            <div class="carousel1">
+                                <div>
+                                    <a href="#">
+                                        <img src="./img/book1.png">
+                                        <div class="book-info">
+                                            <div>
+                                                <h2>한글 2020</h2>
+                                                <p>빅식스 기획실</p>
+                                                <p>빅식스  |  2023.01.10</p>
+                                            </div>
+                                            <p>
+                                                초등 방과후 특기적성 교재 키움 시리즈<br>
+                                                짱 재미있게! 찐 수행평가까지!
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <%for(let i=0;i<booksList.length;i++) {%>
+                                    <div>
+                                        <a href="#">
+                                            <img src="<%-booksList[i].img%>">
+                                            <div class="book-info">
+                                                <div>
+                                                    <h2><%-booksList[i].name%></h2>
+                                                    <p><%-booksList[i].author%></p>
+                                                    <p><%-booksList[i].publisher%></p>
+                                                </div>
+                                                <p>
+                                                    초등 방과후 특기적성 교재 키움 시리즈<br>
+                                                    짱 재미있게! 찐 수행평가까지!
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                <%}%>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrap2">
+                        <div class="wrapper2">
+                            <div class="carousel2">
+                                <% for(let i=0;i<booksList.length;i++){%>
+                                    <div>
+                                        <a href="#">
+                                            <img src="<%-booksList[i].img%>">
+                                            <p><%-booksList[i].name%></p>
+                                        </a>
+                                    </div>
+                                <%}%>
+                                <div>
+                                    <a href="#">
+                                        <img src="./img/book1.png">
+                                        <p>한글 2020</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control">
+                    <p>총 7개의 콘텐츠</p>
+                    <div class="slide_bar">
+                        <div class="slide_top"></div>
+                    </div>
+                    <div class="btn">
+                        <div class="prev"><i class="fa-solid fa-angle-left"></i></div>
+                        <div class="next"><i class="fa-solid fa-angle-right"></i></div>
+                    </div>
+                </div>
+          </div>
+
+
+
+
+          <div class="cont3">
+            <div class="center3">
+                <h2><span>빅식스</span> 방과후 교육연구소</h2>
+                <p>미래를 주도하는 스스로 솔루션</p>
+                <div class="wrap">
+                    <a class="box" href="/school">
+                       
+                            <div>
+                                <h2>학교 교육</h2>
+                                <p>논술 교육, 통합교과 프로젝트 학습, 영어 교육, 교과 심화학습, 유아교육 등</p>
+                            </div>
+                        
+                    </a>
+                    <a class="box"  href="#">
+                       
+                            <div>
+                                <h2>일반교육</h2>
+                                <p>정보 활용 능력 교육, 직무 능력 교육, e-Learing 교육 등</p>
+                            </div>
+                      
+                    </a>
+                    <a class="box" href="/problem">
+                        
+                            <div>
+                                <h2>문제해결력</h2>
+                                <p>스스로 문제를 풀어나가는 6단계 학습</p>
+                            </div>
+                       
+                    </a>
+                </div>
+            </div>
+          </div>
+
+
+
+
+
+
+          <div class="cont4">
+            <div class="center4">
+                <div class="inner1">
+                   
+                        <div>
+                            <a href="#">
+                                <h4>자료실 <span>PEFERENCE</span></h4>
+                                <p>예제파일 및 강의용자료를 다운로드 받으실 수 있습니다.</p>
+                                <img src="./img/con3_more_btn.png">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#">
+                                <h4>문의사항 <span>FAQ</span></h4>
+                                <p>빅식스에 관한 모든 궁금증을 풀어드립니다.</p>
+                                <img src="./img/con3_more_btn.png">
+                            </a>
+                        </div>
+                   
+                </div>
+                <div class="inner2">
+                    <div class="list">
+                        <h5>고객센터</h5>
+                        <h3>CUSTOMER CENTER</h3>
+                        <h2>031-911-7425</h2>
+                        <p>상담시간 AM 09:00 ~ PM 06:00</p>
+                        <p>점심시간 PM 12:00 ~ PM 01:00</p>
+                        <p>토, 일요일 및 공휴일은 휴무입니다.</p>
+                    </div>
+                    <div class="list">
+                        <h5>입금계좌번호</h5>
+                        <h3>BANK INFO</h3>
+                        <h2><span>중소기업은행 예금주:(주)빅식스방과후연구소</span>452-043410-04-011</h2>
+                        <p>예금주 이름을 꼭 확인해주세요.</p>
+                    </div>
+                    <div class="list no3">
+                        <h5>공지사항</h5>
+                        <h3>NOTICE</h3>
+                        <div class="plus_btn">+</div>
+                        <div class="listSub">
+                            <p>선생님자료실 비밀번호 문의<span>2022-12-08</span></p>
+                            <p>교재문의 및 구입안내<span>2022-12-06</span></p>
+                            <p>글꼴다운로드 안내<span>2022-12-01</span></p>
+                            <p>총판리스트<span>2022-11-25</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner3">
+                    <div>협력사</div>
+                    <ul>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+
+
+          </div>
+
+
+
+
+          <%-include("footer.ejs")%>
+    </div>
+
+
+
+    
+
+
+
+
+    <script src="./js/tapmenu.js"></script>
+    <script src="./js/animation.js"></script>
+    <script src="./js/carousel1.js"></script>
+    <script src="./js/scroll.js"></script>
+
+</body>
+</html>

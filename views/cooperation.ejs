@@ -1,0 +1,28 @@
+<%- include("header.ejs",{title:"협력총판리스트",cssFiles:["cooperation.css","header.css","footer.css"]})%>
+
+
+<div class="top">
+    <img src="./img/sub_top.jpg">
+</div>
+<div class="cooperation">
+    <ul class="cooperationMenu">
+        <li><a href="#">학교교육</a></li>
+        <li><a href="#">문제해결력</a></li>
+        <li class="on"><a href="#">협력총판리스트</a></li>
+    </ul>
+    <div class="cooperationMain">
+        <p>빅식스 협력 총판 리스트</p>
+        <div class="center">
+            <% for(let i=0;i<cooperationList.length;i++){%>
+                <div class="list">
+                    <p>지역:<%-cooperationList[i].area%></p>
+                    <p>총판:<%-cooperationList[i].title%></p>
+                    <p>번호:<%-cooperationList[i].phone%></p>
+                </div>
+            <%}%>
+        </div>
+    </div>
+
+</div>
+
+<%-include("footer.ejs")%>

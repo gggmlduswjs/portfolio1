@@ -1,0 +1,29 @@
+<%- include("header.ejs",{title:"협력총판리스트",cssFiles:["books.css","header.css","footer.css"]})%>
+
+
+
+<div class="top">
+    <img src="./img/sub_top.jpg">
+</div>
+
+
+
+<div class="books">
+    <ul class="booksmenu">
+        <li><a href="#">도서안내</a></li>
+    </ul>
+    <div class="booksMain">
+        <p>도서안내</p>
+        <div class="bookscenter">
+            <% for(let i=0;i<booksList.length;i++){%>
+                <div class="book">
+                    <img src="<%-booksList[i].img%>">
+                    <p><%-booksList[i].name%></p>
+                </div>
+            <%}%>
+        </div>
+    </div>
+</div>
+
+
+<%-include("footer.ejs")%>

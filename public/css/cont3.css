@@ -1,0 +1,130 @@
+.cont3{ width: 100%; height: 100vh;}
+
+.center3 {
+    width: 1200px;
+
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+
+
+.center3 > h2 { margin-top: 200px; font-size: 35px; position: relative; z-index: 0;}
+.center3 >h2::before{
+    content: "";
+    position: absolute;
+    clear: both;
+    bottom: -10px;
+    width: 100%;
+    height: 30px;
+    background-image: url(../img/con1_txt_bg.png);
+
+    z-index: -1;
+
+
+
+}
+
+.center3 >h2 span { color: #ff722b;}
+.center3 > p { margin: 30px 0 ; font-size: 20px; }
+
+
+
+.wrap{
+
+    margin: 70px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+
+}
+
+.box {
+    display: block;
+    width: 380px;
+    height: 380px;
+    border-radius: 20%;
+    box-shadow: 0px 2px 7px  #e6e6e6;
+    position: relative;
+    transition: all 0.5s;
+    
+
+
+
+}
+
+
+.box:hover {
+
+    background-color: #ff722b;
+
+
+
+}
+
+.box:hover >div { color: #fff;}
+
+
+
+
+
+
+
+.box:nth-child(1) {
+    background-image: url(../img/box1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+.box:nth-child(2) {
+    background-image: url(../img/box2.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+.box:nth-child(3) {
+    background-image: url(../img/box3.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+.box >div { 
+    width: 80%;
+    
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 60px;
+
+
+
+    display: flex;
+         justify-content: end;
+         align-items: center;
+         flex-direction: column;
+         color: black;
+
+     
+
+
+}
+
+.box:nth-child(3) div {
+
+    bottom: 80px;
+}
+
+.box div > p {
+     text-align: center;
+     margin-top: 10px;
+
+
+}

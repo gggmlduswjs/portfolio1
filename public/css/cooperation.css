@@ -1,0 +1,134 @@
+.top {width: 100%; margin-top: 76px;}
+.top img { width: 100%;}
+
+
+.cooperation {
+ width: 1200px;
+ margin: 0 auto;
+ display:flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ 
+    
+}
+
+
+.cooperationMenu {
+    height: 53px;
+    overflow: hidden;
+    margin: 40px auto 0 auto;
+    padding: 20px 0 25px 0;
+    display: flex;
+    
+}
+
+.cooperationMenu li {
+    background: url(../img/sub_menu_line.gif) right no-repeat;
+    padding-right: 20px;
+    padding-left: 7px;
+
+
+}
+
+
+.cooperationMenu li a {
+
+    color: #9c9c9c;
+    text-align: left;
+    vertical-align: middle;
+    height: 40px;
+    line-height: 35px;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+    font-weight: bold;
+
+
+
+}
+
+
+.cooperationMenu li.on a{
+
+    color: #ff722b;
+
+
+}
+
+
+.cooperationMain {
+
+    width: 100%;
+
+    margin: 70px 0;
+
+
+
+}
+
+
+.cooperationMain >p {
+
+    padding-left: 28px;
+    position: relative;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: 500;
+
+    color: #333333;
+    margin-bottom: 30px !important;
+
+}
+
+.cooperationMain >p::before {
+
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/bullet1.png);
+    background-size: contain;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+
+
+.center {
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+
+}
+
+
+.center .list {
+
+    width: 23%;
+    background-color: #ff935d;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 0 5px 0;
+
+}
+
+
+.center .list >p {
+    font-size: 17px;
+    color: #ffffff !important;
+    line-height: 30px;
+    letter-spacing: -1px;
+    word-break: keep-all;
+}
+
+
+
+

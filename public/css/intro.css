@@ -1,0 +1,165 @@
+#intro { width: 100%;}
+
+.top {width: 100%; margin-top: 76px;}
+.top img { width: 100%;}
+
+
+
+.introCenter {
+    width: 1200px;
+    margin: 50px auto 200px auto;
+    font-size: 1.250em;
+    line-height: 1.7em;
+
+
+
+
+}
+
+.introGnb { 
+   
+    width: 300px;
+    height: 53px;
+    margin: 0 auto 55px auto;
+    padding: 30px 0;
+    display: flex;
+
+}
+
+
+.introGnb >li { 
+    padding: 0 25px 0 20px;
+  
+
+
+}
+
+.introGnb >li:nth-child(1) {
+
+    background-image: url(../img/sub_menu_line.gif);
+    background-repeat: no-repeat;
+    background-position: right;
+    
+
+
+}
+
+
+.introGnb >li a {  
+    color: #9c9c9c;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+   font-size: 25px;
+
+
+}
+
+
+.introGnb >li:nth-child(1) a {  color: #ff722b;}
+
+
+
+.title { 
+   
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #333333;
+    margin: 70px 0 30px 0;
+}
+
+.title::before {
+     
+    display: inline-block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/bullet1.png");
+    background-repeat: no-repeat;
+    padding-left: 28px;
+
+
+
+
+}
+
+
+.intro_text {
+    font-size: 17px;
+    color: #555555;
+    line-height: 30px;
+    margin-bottom: 10px;
+
+}
+
+
+.title1 {
+    padding-left: 20px;
+    position: relative;
+    margin: 10px 0 ;
+
+}
+
+.title1::before {
+    display: block;
+    content: "";
+    width: 15px;
+    height: 13px;
+    position: absolute;
+    transform: translateY(-50%);
+    left: 0;
+    top: 15px;
+    background-image: url(../img/bullet5.png);
+
+
+
+}
+
+
+.sub_text1 {
+    position: relative;
+    font-size: 15px;
+    line-height: 20px;
+    padding-left: 12px;
+
+
+
+}
+
+
+.sub_text1::before {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    transform: translateY(-50%);
+    display: block;
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: orange;
+    margin-right: 5px;
+    
+
+
+}
+
+.sub_text { 
+    padding-left: 12px;
+    margin: 15px 0;
+
+}
+
+.introCenter  img {
+
+    margin-bottom: 50px;
+
+}
+
+
+
+
+

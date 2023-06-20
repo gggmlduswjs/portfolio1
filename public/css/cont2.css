@@ -1,0 +1,198 @@
+.cont2 { width: 100%; height: 100vh;
+            
+         background-image: url(../img/con2_bg.jpg);
+         background-repeat: no-repeat;
+         background-size:100% 58%
+
+
+}
+.cont2 .top {  display: flex; flex-wrap: wrap;  margin-left:15%; margin-top:50px; margin-bottom: 90px;}
+
+
+
+.cont2 .title { width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center;flex-direction: column;}
+.title > h2 { margin-top: 150px; font-size: 35px; position: relative; z-index: 0;}
+.title > p { margin: 30px 0; font-size: 20px;}
+
+.title > h2 > span { color: #52639a}
+
+.title > h2::before{
+    content: "";
+    position: absolute;
+    clear: both;
+    bottom: -10px;
+    width: 100%;
+    height: 30px;
+    background-image: url(../img/con2_txt_bg.png);
+
+    z-index: -1;
+
+}
+
+
+
+
+
+
+
+
+
+.wrap1 { 
+    width: 40%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    overflow: hidden;
+}
+
+
+.wrap1 .wrapper1 { 
+    width: 100%;
+
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+
+
+}
+
+
+.wrap1 .wrapper1 .carousel1 { width: 800%; display: flex; margin-left: -100%;}
+.wrap1 .wrapper1 .carousel1 > div { width: 12.5%; height: 400px; color:#fff; font-size:30px;}
+
+.wrap1 .wrapper1 .carousel1 >div > a { display: flex; justify-content: space-between;
+    width: 100%; height: 100%;
+    color: #000;
+
+
+
+}
+.wrap1 .wrapper1 .carousel1 > div > a > img {width: 400px; height: 400px;}
+
+
+.wrap1 .wrapper1 .carousel1 > div >a .book-info { 
+
+    width: 240px;
+    height: 100%;
+}
+
+.wrap1 .wrapper1 .carousel1 > div >a .book-info h2 {
+
+    font-size:23px ;
+    line-height: 30px;
+
+
+
+
+}
+
+
+.book-info >div >p { font-size: 15px; line-height: 30px;}
+
+.book-info > div {
+    margin-top: 30px;
+    margin-bottom: 145px;
+}
+
+.book-info >p{
+    font-size: 15px; line-height: 15px;
+}
+
+.wrap2 {
+    width:60%;
+    display: flex;
+    align-items: end;
+
+}
+
+
+.wrapper2 {
+    width: 100%;
+    overflow: hidden;
+
+
+}
+
+.wrapper2 .carousel2 {
+    width: 200%;
+    display: flex;
+
+
+
+}
+
+
+.wrapper2 .carousel2 > div { 
+
+    width: 12.5%;
+    height: 280px;
+   
+
+
+
+}
+
+
+.wrapper2 .carousel2 >div >a {
+    width: 100%;
+    height: 100%;
+    color: #000;
+
+
+
+
+}
+
+
+.wrapper2 .carousel2 >div > a > img {
+    width: 100%;
+    height: 90%;
+
+
+}
+
+.wrapper2 .carousel2 >div a > p {
+
+
+    text-align: center;
+}
+
+
+
+
+.control { 
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.control >p { font-size: 15px;}
+
+
+
+
+.btn { display: flex;  }
+
+.slide_bar { width:950px; height:2px; background-color:rgb(188, 188, 188); position:relative; }
+.slide_bar .slide_top { width:12.5%; height:2px; background-color:#000; transition:all 0.5s;  position:absolute; left:0; top:0;}
+
+
+.prev { width: 40px; height: 40px; border-radius: 50%; background-color: gainsboro; margin: 0 10px; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+
+
+}
+.next { width: 40px; height: 40px; border-radius: 50%; background-color: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+
+
+}

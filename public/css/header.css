@@ -1,0 +1,83 @@
+
+
+
+
+
+
+
+
+#header { display: flex; justify-content: center;
+     position: fixed;
+     z-index: 100000000;
+     width: 100%;
+     left: 0;
+     top: 0;
+     transition: all 0.5s;
+     background-color: #fff;
+    
+    
+    
+    }
+
+
+
+
+
+
+        #header .h_center { width: 1500px; display: flex; justify-content: space-between; align-items: center;}
+
+
+
+        #header .h_center .gnbWrap .h_gnb { display: flex;}
+        #header .h_center .gnbWrap .h_gnb >li{ position: relative; width: 100px; display: flex; justify-content: center; align-items: center; margin: 0 5px; padding: 30px 0;font-weight: bold;}
+        #header .h_center .gnbWrap .h_gnb >li> a{ color: #000;}
+
+
+        #header .h_center .gnbWrap .h_gnb .sub {
+            position: absolute;
+            left: 0;
+            top: 76px;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.5s;
+            z-index: 10000;
+
+
+
+        }
+
+
+
+
+        #header .h_center .gnbWrap .h_gnb .sub li a { color: #000; display: flex; height: 40px; justify-content: center;align-items: center; font-size: 13px; font-weight: 500; }
+
+        #header .h_center .gnbWrap .h_gnb .sub li:hover a { color: orange;}
+
+
+        #header .h_center .gnbWrap .gnbBg { 
+            position: absolute;
+            left: 0;
+            top: 76px;
+            width: 100%;
+            height: 0;
+            transition: all 0.5s;
+            background-color: #fff;
+            z-index: 10000
+
+
+
+
+        }
+
+
+
+        #header .h_center .login {
+            display: flex;
+            
+
+
+        }
+
+
+        #header .h_center .login li { margin: 0 10px;}

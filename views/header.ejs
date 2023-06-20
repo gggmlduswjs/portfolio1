@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%-title%></title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <% if(cssFiles.length != 0) {%>
+        <% for(let i=0;i<cssFiles.length;i++) {%>
+            <link rel="stylesheet" href="/css/<%-cssFiles[i]%>">
+        <%}%>
+    <%}%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+
+
+</head>
+<body>
+    <div id="header">
+        <div class="h_center">
+            <h1 class="logo">
+                <a href="/">
+                    <img src="img/logo.png">
+                </a>
+            </h1>
+            <div class="gnbWrap">
+                <div class="gnbBg"></div>
+                <ul class="h_gnb">
+                    <li>
+                        <a href="/company">회사소개</a>
+                        <ul class="sub">
+                            <li><a href="/company">회사소개</a></li>
+                            <li><a href="/directions">오시는 길</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">사업소개</a>
+                        <ul class="sub">
+                            <li><a href="/school">학교 교육</a></li>
+                            <li><a href="/problem">문제해결력</a></li>
+                            <li><a href="/cooperation">협력총판리스트</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">도서안내</a>
+                        <ul class="sub">
+                            <li><a href="/books">도서안내</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">자료실</a>
+                        <ul class="sub">
+                            <li><a href="#">교재자료실</a></li>
+                            <li><a href="#">교재정오표</a></li>
+                            <li><a href="#">일반자료실</a></li>
+                            <li><a href="#">동영상자료실</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">게시판</a>
+                        <ul class="sub">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">문의사항</a></li>
+                            <li><a href="#">자유계시판</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">구입문의</a>
+                        <ul class="sub">
+                            <li><a href="#">구입문의</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">선생님자료실</a>
+                        <ul class="sub">
+                            <li><a href="#">예제파일</a></li>
+                            <li><a href="#">강의용PPT자료</a></li>
+                            <li><a href="#">강의교육안</a></li>
+                            <li><a href="#">동영상게시판</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>    
+            <ul class="login">
+                <li><router-link><img src="img/login_icon1.png">로그인</router-link></li>
+                <li><router-link><img src="img/login_icon2.png">회원가입</router-link></li>
+            </ul>
+        </div> 
+    </div>
