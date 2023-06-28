@@ -3,7 +3,7 @@
 
 
 <div class="top">
-    <img src="./img/sub_top.jpg">
+    <img src="/img/sub_top.jpg">
 </div>
 
 
@@ -17,8 +17,10 @@
         <div class="bookscenter">
             <% for(let i=0;i<booksList.length;i++){%>
                 <div class="book">
-                    <img src="<%-booksList[i].img%>">
-                    <p><%-booksList[i].name%></p>
+                    <a href="/booksdetail/<%-i+1%>">
+                        <img src="<%-booksList[i].img%>">
+                        <p><%-booksList[i].name%></p>
+                    </a>
                 </div>
             <%}%>
         </div>

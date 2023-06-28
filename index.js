@@ -107,6 +107,8 @@ app.get("/cooperation",function(req,res){
 
 app.get("/books",function(req,res){
     res.render("books.ejs",{booksList:booksList,login:req.user})
+
+
 });
 
 //다른 서브페이지들도 로그인 되어있는 회원정보 데이터 보내야 함
@@ -312,3 +314,154 @@ app.post("/myupdate",(req,res)=>{
         res.send("<script> alert('기존 비밀번호와 일치하지 않습니다'); location.href='/mypage' </script>")
     }
 })
+
+
+//로그인 화면페이지 경로요청 -> url parameter
+app.get("/booksdetail/:num",(req,res)=>{
+
+    db.collection("booksDetail").findOne({num:Number(req.params.num)},(err,result)=>{
+        res.render("booksDetail.ejs",{login:req.user,data:result})
+    })
+   
+})
+
+
+
+//게시글 작성화면 페이지
+app.get("/free/insert",(req,res)=>{
+    res.render("free_insert.ejs",{login:req.user})
+   // login:req.user
+})
+
+
+//게시글 목록 페이지
+app.get("/free/list",(req,res)=>{
+    db.collection("board").find().toArray((err,result)=>{
+        //게시글 목록 데이터 전부 가지고 와서 목록 페이지로 전달
+        res.render("free_list.ejs",{login:req.user,data:result,text:""})
+    })
+})
+
+
+
+//입력한 게시글 데이터->db에 저장처리
+app.post("/dbinsert",(req,res)=>{
+    db.collection("count").findOne({name:"게시글"},(err,result)=>{
+        db.collection("board").insertOne({
+            num:result.boardCount,
+            title:req.body.title,
+            author:req.body.author
+        },(err,result)=>{
+            db.collection("count").updateOne({name:"게시물"},{$inc:{boardCount:1}},(err,result)=>{
+
+
+                //게시글 작성완료 후 해당 게시글 번호의 데이터값을 불러와서
+                //해당 상세페이지로 이동할 수 있도록 주소에 게시글번호를 뒤에다가 붙여준다
+                //         res.redirect("/board/detail/게시글번호값")
+                res.redirect("/free/list")
+            })
+
+
+            
+        })
+    })
+})
+
+//게시글 상세화면 페이지로 요청
+
+
+app.get("/free/detail/:num",(req,res)=>{
+    
+    db.collection("board").findOne({num:Number(req.params.num)},(err,result)=>{
+        //find로 찾아온 데이터값은 result에 담긴다
+        //상세페이지 보여주기 위해서 찾은 데이터값을 함께 전달한다 
+        res.render("free_detail.ejs",{data:result,login:req.user})
+    })
+
+    
+
+
+})
+
+
+//게시글 상세화면 페이지에서 삭제를 눌렀을 대 요첯ㅇ
+
+//게시글 작성화면 페이지
+app.get("/dbdelete/:num",(req,res)=>{
+   db.collection("board").deleteOne({num:Number(req.params.num)},(err,result)=>{
+    //게시글 삭제 후 게시글 목록페이지로 요청
+    res.redirect("/free/list")
+   })
+})
+
+
+//체크박스 선택한 게시글들 지우는 처리
+app.get("/dbseldel",(req,res)=>{
+    let changeNumber = [];
+    req.query.delOk.forEach((item,index)=>{
+        changeNumber[index] = Number(item);
+    })
+
+    //변환된 게시글 번호 갯수들만큼 실제 데이터 베이스에서 삭제처리 deleteMany()
+                                                //배열안에있는 데이터랑 매칭되는 것들을 삭제
+    db.collection("board").deleteMany({num:{$in:changeNumber}},(err,result)=>{
+        res.redirect("/free/list");
+    })
+})
+
+
+//수정화면 페이지 요청
+app.get("/free/update/:num",(req,res)=>{
+
+    db.collection("board").findOne({num:Number(req.params.num)},(err,result)=>{
+        //find로 찾아온 데이터값은 result에 담긴다
+        //상세페이지 보여주기위해서 찾은 데이터값을 함께 전달한다.
+        res.render("free_update.ejs",{data:result,login:req.user});
+    })
+})
+
+//데이터베이스 수정요청
+app.post("/dbupdate",(req,res)=>{
+    db.collection("board").updateOne({num:Number(req.body.num)},{$set:{title:req.body.title,author:req.body.author,content:req.body.content}},(err,result)=>{
+        res.redirect(`/free/detail/${req.body.num}`) //데이터베이스 데이터 수정후 게시글 목록페이지로 요청
+    })
+})
+
+
+
+//검색 요청
+app.get("/search",(req,res)=>{
+
+    //검색조건 세팅(찾는 단어는 뭐고, 검색결과 갯수 몇개까지?, 순서정렬?)
+    let check = [
+    {
+        //$search
+        $search:{
+            //db사이트에서 검색엔진 설정한 이름값
+            index:"seachTest",
+            text:{
+                //검색어 입력단어값
+                query:req.query.inputText,
+                //어떤항목을 검색할것인지
+                // path:[req.query.search,다음항목]-> 여러개 설정할 때는 배열로
+                path:req.query.search
+            }
+        }
+    },
+    { 
+        // 내림차순, 오름차순   
+        $sort:{ num:-1}
+    },
+    // {$limit:2}
+
+
+]
+
+
+
+    db.collection("board").aggregate(check).toArray((err,result)=>{
+        res.render("free_list.ejs",{data:result,text:req.query.inputText,login:req.user})
+        //검색결과 데이터들만 보내줌
+    })
+})
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 입력페이지</title>
+</head>
+<body>
+    <%- include("header.ejs",{title:"게시판 입력 페이지",cssFiles:["freeinsert.css","header.css","footer.css"]})%>
+
+
+    <div class="top">
+        <img src="/img/sub_top.jpg">
+    </div>
+
+
+    
+        <form action="/dbinsert" method="post">
+            <div class="center">
+                <div class="a1">
+                    <input class="title" type="text" name="title" placeholder="제목을 입력하세요...">
+                    <input class="author" type="text" name="author" placeholder="작성자">
+                </div>
+                <textarea class="text" name="content" placeholder="내용을 입력하세요.."></textarea>
+                <button class="btn" type="submit">게시글 작성완료</button>
+            </div>
+        </form>
+    
+
+    
+
+    <%-include("footer.ejs")%>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록페이지</title>
+</head>
+<body>
+    <%- include("header.ejs",{title:"게시판 목록 페이지",cssFiles:["freeList.css","header.css","footer.css"]})%>
+
+
+    <div class="top">
+        <img src="/img/sub_top.jpg">
+    </div>
+
+
+    
+    
+    
+
+    <div class="center">
+
+        <ul class="gnb">
+            <li><a href="#">공지사항</a></li>
+            <li class="on"><a href="/free/list">자유게시판</a></li>
+        </ul>
+        
+        <!--데이터에 잇는 데이터 값 만큼 목록을 작성-->
+        <div class="list">
+            <ul>
+                <li class="a1">번호</li>
+                <li class="a2">제목</li>
+                <li class="a3">글쓴이</li>
+            </ul>
+            <form id="board" action="/dbseldel" method="get">
+                <% for(let i=0;i<data.length;i++) {%>
+                    <div class="lists">
+                        <!--체크박스 항목을 다중체크해서 데이터를 보낼 때 name 속성에 []붙여서 사용(배열형식)-->
+                        <!--value을 사용한 이유는 해당 게시글 번호값 데어터 전송하려고 사용-->
+                        <input type="checkbox" name="delOk[]" class="delOk" value="<%-data[i].num%>">
+                        <div class="num"><%-data[i].num%></div>
+                        <div class="title"><a href="/free/detail/<%-data[i].num%>"><%-data[i].title%></a></div>
+                        <div class="author"><%-data[i].author%></div>
+                    </div>
+                <%}%>
+    
+                <button type="submit" id="selectDelete">선택삭제</button>
+                <input type="checkbox" id="selectToggle"><label for="selectToggle">전체선택/전체해제</label>
+            </form>
+        </div>
+        
+        <div class="b1">
+
+            <!-- 검색창-->
+            <form id="searchForm" action="/search" method="get">
+                <!-- 어떤 항목으로 검색할 것인지 -->
+                <select name="search">
+                    <option value="title">제목</option>
+                    <option value="author">작성자</option>
+                    
+                </select>
+                <!--검색어 입력 데이터-->
+                <input id="inputText" type="text" name="inputText" value="<%- text%>">
+                <button id="searchBtn" type="submit">검색</button>
+
+            </form>
+
+            <div class="btn"><a href="/free/insert">글쓰기</a></div>
+            
+
+        </div>
+
+    </div>
+
+
+
+
+    
+
+
+    <%-include("footer.ejs")%>
+
+    <script>
+        //체크박스를 체크했을 때->해당 input채그들의 value값을 서버에 전달
+        //체그박스에 하나라도 체크 되있지 않았을 때는 preventDefault()실행 -> 페이지 이동 막음
+        //실제 데이터베이스로 접근하기 전에 화면단계에서 검증 validation
+        const delBtn = document.querySelector("#selectDelete");
+        delBtn.addEventListener("click",(event)=>{
+            //event.preventDefault();
+            //폼태그대상.submit(); //폼태그에서 작성한 데이터를 action 속성에서 지정한 페이지로 이동,전달
+
+            
+
+            
+            let result = window.confirm("선택한 항목들을 삭제하시겠습니?");
+            //컨펌화면에서 확인을 눌렀을 때
+            if(result){
+                //이 안에서 조건문 한번 더 체크(체크박스에 체크했는지 여부 확인)
+                if(document.querySelectorAll(".delOk:checked").length >0){
+                    alert("선택한 항목들을 삭제하였습니다");
+                    board.submit();//전송버튼 누를 역할 -> /dbseldel 경로로 요청
+                }
+                else{
+                    alert("선택한 항목이 없습니다")
+                    event.preventDefault
+                }
+            }
+            //컨펌화면에서 취소를 눌렀을 때
+            else {
+                alert("삭제를 취소하였습니다")
+                event.preventDefault();
+            }
+        })
+
+
+        //전체선택/전체해제 체크박스 이벤트
+        const toggle = document.querySelector("#selectToggle");
+        const delOk = document.querySelectorAll(".delOk");//목록에 각각 표시되는 체크박스
+
+        toggle.addEventListener("click",()=>{
+            //toggle의 체크박스 상태를 가지고옴 -> 태그대상.checked
+            let checkToggle = toggle.checked;
+            //반복문으로 체크박스 class이름에 해당하는 태그들 전부 선택
+            //전체선택/해제의 체크상태를 가지고 와서 -> 목록에 있는 체크박스들 전부 선택,해제
+            delOk.forEach((item,index)=>{
+                item.checked = checkToggle
+            })
+        });
+
+        //검색어 입력하지 않았을 때 경고창 띄움 / 입력했으면 넘어감
+        const searchForm = document.querySelector("#searchForm");//폼태그
+        const inputText = document.querySelector("#inputText");//검색어 입력
+        const searchBtn = document.querySelector("#searchBtn");//전송버튼
+
+
+        searchBtn.addEventListener("click",(event)=>{
+            
+            let data = inputText.value; //검색어 입력값 data변수에 담음
+            console.log(data);
+
+            // trim() <--- 입력값 앞 뒤 빈 공백문자를 제거 시키는 함수
+             let result = data.trim();
+            //  console.log(result);
+
+
+            //입력값이 없으면 넘어가지마 
+            if(result===""){
+                alert("검색어 입력하세요");
+                event.preventDefault();
+
+            }
+            
+
+            //입력값이 있으면 넘어가 / search
+            else{
+                searchForm.submit();   
+            }
+
+        })
+
+    </script>
+</body>
+</html>

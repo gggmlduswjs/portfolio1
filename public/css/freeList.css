@@ -1,0 +1,152 @@
+.top {width: 100%; margin-top: 76px;}
+.top img { width: 100%;}
+
+.center {
+
+   width: 1200px;
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ 
+}
+
+.list {
+    width: 100%;
+}
+
+
+.lists {
+
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+
+}
+
+.lists >div{
+
+    display: flex;
+    align-items: center;
+    
+}
+
+.lists .num {
+
+    width: 5%;
+    height: 40px;
+    justify-content: center;
+}
+
+.lists .title {
+    width: 75%;
+    height: 40px;
+}
+
+.lists .author {
+    width: 25%;
+    height: 40px;
+
+}
+
+
+.list >ul {
+    width: 100%;
+    display: flex;
+    margin-left: 13px;
+        border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #fafafa;
+}
+
+
+.list >ul >li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.a1 {
+    width: 5%;
+    height: 40px;
+}
+
+.a2 {
+    width: 75%;
+    height: 40px;
+}
+
+.a3 {
+    width: 25%;
+    height: 40px;
+}
+
+
+.gnb {
+    height: 53px;
+    overflow: hidden;
+    margin: 40px auto 0 auto;
+    padding: 20px 0 25px 0;
+    display: flex;
+    
+}
+
+.gnb li {
+    background: url(../img/sub_menu_line.gif) right no-repeat;
+    padding-right: 20px;
+    padding-left: 7px;
+
+
+}
+
+
+.gnb li a {
+
+    color: #9c9c9c;
+    text-align: left;
+    vertical-align: middle;
+    height: 40px;
+    line-height: 35px;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+    font-weight: bold;
+
+
+
+}
+
+
+.gnb li.on a{
+
+    color: #ff722b;
+
+
+}
+
+
+.b1 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    margin: 20px 0;
+}
+
+.btn >a  {
+        display: inline-block;
+    background: #333333;
+    color: #fff;
+    text-decoration: none;
+    vertical-align: middle;
+    border: 0;
+    font-size: 15px;
+    width: 100px;
+    line-height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,68 @@
+<%- include("header.ejs",{title:"도서상세페이지",cssFiles:["booksDetail.css","header.css","footer.css"]})%>
+
+
+<div class="top">
+    <img src="/img/sub_top.jpg">
+</div>
+
+
+<div class="center">
+    <ul class="gnb">
+        <li><a href="#">도서안내</a></li>
+    </ul>
+    <div class="book1">
+        <div>
+            <div>
+                <img src="<%-data.bigThumbnail%>">
+            </div>
+            <ul class="small">
+                <li>
+                    <a href="#">
+                        <img src="<%-data.smallThumbnail[0]%>">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="<%-data.smallThumbnail[1]%>">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="subBook1">
+            <div class="catagory">
+                <p><%-data.category%></p>
+            </div>
+            <div class="title">
+                <p><%-data.title%></p>
+            </div>
+            <div class="subtext">
+                <p>출판사 명:<%-data.publishName%></p>
+                <p>출판년월일:<%-data.publishDate%></p>
+                <p class="context"><%-data.context%></p>
+            </div>
+        </div>
+    </div>
+    <div class="book2">
+        <img src="<%-data.smallThumbnail[2]%>">
+    </div>
+    <div class="book3">
+        <h2>책소개</h2>
+        <p>
+            <%-data.bookcategory%>
+        </p>
+        <h2>분류</h2>
+        <p><%-data.bookintro[0]%></p>
+        <p><%-data.bookintro[1]%></p>
+        <h2>목차</h2>
+        <% for ( let i=0 ; i<data.booktable.length;i++) {%>
+
+            <p>
+                <%-data.booktable[i]%>
+            </p>
+
+        <%}%>
+    </div>
+</div>
+
+
+<%-include("footer.ejs")%>

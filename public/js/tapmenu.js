@@ -7,10 +7,10 @@ const gnbBg = document.querySelector(".gnbBg");
 gnbWrap.onmouseenter = function(){
     for(let i=0; i<sub.length; i++){
        // depth2[i].style.display = "block";
-       sub[i].style.height = "200px";
+       sub[i].style.height = "120px";
     }
    //  gnbBg.style.display = "block";
-   gnbBg.style.height = "200px";
+   gnbBg.style.height = "120px";
 }
 
 //gnbWrap에 마우스를 내렸을 때
