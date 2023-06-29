@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 수정 페이지</title>
+</head>
+<body>
+    <!-- 파일 첨부 1개만 시킬때-->
+    <form id="upload" action="/dbupdate1" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="num" value="<%-data.num%>">
+        <input type="text" name="title" value="<%- data.title%>">
+        <input type="text" name="author" >
+        <!--파일첨부-->
+        <input type="file" name="thumbnail">
+        <button type="submit">게시글 등록 완료</button>
+    </form>
+
+
+    <!-- 파일 첨부 여러개 시킬때-->
+    <!-- input type="file"을 여러개 사용시(응용)-->
+</body>
+</html>

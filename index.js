@@ -1,4 +1,5 @@
 const express = require("express");
+const multer  = require('multer');//파일 업로드 기능 multer 사용하기 위한 불러오기
 const MongoClient = require("mongodb").MongoClient;
 //데이터베이스의 데이터 입력,출력을 위한 함수명령어 불러들이는 작업
 const app = express();
@@ -336,7 +337,7 @@ app.get("/free/insert",(req,res)=>{
 
 //게시글 목록 페이지
 app.get("/free/list",(req,res)=>{
-    db.collection("board").find().toArray((err,result)=>{
+    db.collection("board").find().sort({num:-1}).toArray((err,result)=>{
         //게시글 목록 데이터 전부 가지고 와서 목록 페이지로 전달
         res.render("free_list.ejs",{login:req.user,data:result,text:""})
     })
@@ -346,19 +347,20 @@ app.get("/free/list",(req,res)=>{
 
 //입력한 게시글 데이터->db에 저장처리
 app.post("/dbinsert",(req,res)=>{
-    db.collection("count").findOne({name:"게시글"},(err,result)=>{
+    db.collection("count").findOne({name:"게시글"},(err,countResult)=>{
         db.collection("board").insertOne({
-            num:result.boardCount,
+            num:countResult.boardCount,
             title:req.body.title,
-            author:req.body.author
+            author:req.body.author,
+            content:req.body.content,
         },(err,result)=>{
-            db.collection("count").updateOne({name:"게시물"},{$inc:{boardCount:1}},(err,result)=>{
+            db.collection("count").updateOne({name:"게시글"},{$inc:{boardCount:1}},(err,result)=>{
 
 
                 //게시글 작성완료 후 해당 게시글 번호의 데이터값을 불러와서
                 //해당 상세페이지로 이동할 수 있도록 주소에 게시글번호를 뒤에다가 붙여준다
                 //         res.redirect("/board/detail/게시글번호값")
-                res.redirect("/free/list")
+                res.redirect("/free/detail/"+countResult.boardCount)
             })
 
 
@@ -465,3 +467,74 @@ app.get("/search",(req,res)=>{
     })
 })
 
+
+
+
+
+//파일 첨부 후 서버에 전달 할 때 multer library 설정
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/upload') //업로드 폴더 지정
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname = Buffer.from(file.originalname, 'latin1').toString('utf8'))
+      //영어가 아닌 다른 파일명 안깨지고 나오게 처리
+    }
+  })
+  
+  const upload = multer({ storage: storage })
+//upload는 위의 설정사항을 담은 변수(상수) 
+
+
+
+app.get("/exfile/list",(req,res)=>{
+    db.collection("exFile").find().sort({num:-1}).toArray((err,result)=>{
+        res.render("exFile_list.ejs",{data:result,login:req.user})
+    })
+})
+
+
+app.get("/exfile/insert",(req,res)=>{
+    res.render("exFile_insert.ejs",{login:req.user})
+})
+
+                        //input type="file" name="thumbnail" <--- 이 값을 대입
+app.post("/dbupload",upload.single("thumbnail"),(req,res)=>{
+    
+    db.collection("count").findOne({name:"예제파일"},(err,countResult)=>{
+        db.collection("exFile").insertOne({
+            num:countResult.exCount,
+            title:req.body.title,
+            author:req.body.author,
+            attachfile:req.file.filename,
+        },(err,result)=>{
+            db.collection("count").updateOne({name:"예제파일"},{$inc:{exCount:1}},(err,result)=>{
+                res.redirect(`/exFile/detail/${countResult.exCount}`)
+            })
+        })
+    })
+
+
+})
+
+
+app.get("/exfile/detail/:num",(req,res)=>{
+    db.collection("exFile").findOne({num:Number(req.params.num)},(err,result)=>{
+        res.render("exFile_detail.ejs",{data:result,login:req.user})
+    })
+})
+
+
+app.get("/exfile/update/:num",(req,res)=>{
+    db.collection("exFile").findOne({num:Number(req.params.num)},(err,result)=>{
+        res.render("exFile_update.ejs",{data:result,login:req.user})
+    })
+})
+
+
+app.post("/dbupdate1",upload.single("thumbnail"),(req,res)=>{
+    //첨부파일 첨부하지 않았을 때 경우는 아직 구현 안함
+    db.collection("exFile").updateOne({num:Number(req.body.num)},{$set:{title:req.body.title,attachfile:req.file.filename}},(err,reslut)=>{
+        res.redirect(`/exfile/detail/${req.body.num}`) 
+    })
+})
