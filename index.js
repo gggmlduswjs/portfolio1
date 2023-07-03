@@ -440,7 +440,7 @@ app.get("/search",(req,res)=>{
         //$search
         $search:{
             //db사이트에서 검색엔진 설정한 이름값
-            index:"seachTest",
+            index:"default",
             text:{
                 //검색어 입력단어값
                 query:req.query.inputText,
